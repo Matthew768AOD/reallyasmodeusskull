@@ -1,12 +1,14 @@
 
 input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(78)
+    radio.sendNumber(12)
 })
-
-radio.onReceivedNumber(function(receivedNumber: number) {
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    control.reset();
+})
+radio.onReceivedNumber(function (receivedNumber: number) {
     console.log(receivedNumber)
 })
-radio.onReceivedValue(function(name: string, value: number) {
+radio.onReceivedValue(function (name: string, value: number) {
     console.log(name)
     console.log(value)
 })
@@ -16,8 +18,12 @@ radio.setFrequencyBand(7)
 // 0...7
 radio.setTransmitPower(7)
 // 0...255
-radio.setGroup(213)
+radio.setGroup(5)
 radio.setTransmitSerialNumber(true)
-console.logValue("name", control.deviceName())
-radio.sendString("")
-radio.sendValue("name", 7)
+console.logValue("name", Utility.encodeSerial())
+radio.onReceivedNumber(function(receivedNumber: number) {
+    music.playTone(Note.C, music.beat(BeatFraction.Whole))
+    basic.showString(string)
+    basic.showString(number)
+})
+
